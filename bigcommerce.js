@@ -26,11 +26,11 @@ export function getBCAuth(query) {
 }
 
 export function getBCVerify({ signed_payload_jwt }) {
-  const bigcommerceSigned = new BigCommerce({
-    secret: CLIENT_SECRET,
-    responseType: "json",
-  });
-  return bigcommerceSigned.verifyJWT(signed_payload_jwt);
+  // const bigcommerceSigned = new BigCommerce({
+  //     secret: CLIENT_SECRET,
+  //     responseType: 'json',
+  // });
+  return bigcommerce.verifyJWT(signed_payload_jwt);
 }
 
 export function encodePayload({ user, owner, ...session }) {
