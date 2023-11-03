@@ -35,6 +35,8 @@ app.get("/load", async (req, res) => {
     res.redirect(302, buildRedirectUrl(session.url, encodedContext));
   } catch (error) {
     const { message, response } = error;
+    console.log("error..", error);
+
     res.status(response?.status || 500).json({ message });
   }
 });
