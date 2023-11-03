@@ -17,7 +17,7 @@ app.get("/auth", async (req, res) => {
     const session = await getBCAuth(req.query);
     const encodedContext = encodePayload(session);
     global.session = session;
-    res.redirect(302, `${window.location.origin}/?context=${encodedContext}`);
+    res.redirect(302, `?context=${encodedContext}`);
   } catch (error) {
     const { message, response } = error;
     res.status(response?.status || 500).json({ message });
