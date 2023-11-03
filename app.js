@@ -17,8 +17,7 @@ app.get("/auth", async (req, res) => {
     const session = await getBCAuth(req.query);
     const encodedContext = encodePayload(session);
     global.session = session;
-    location.href = `${window.location.origin}/?context=${encodedContext}`;
-    //res.redirect(302, `${window.location.origin}/?context=${encodedContext}`);
+    res.redirect(302, `${window.location.origin}/?context=${encodedContext}`);
   } catch (error) {
     const { message, response } = error;
     res.status(response?.status || 500).json({ message });
@@ -30,8 +29,7 @@ app.get("/load", async (req, res) => {
     const session = await getBCVerify(req.query);
     const encodedContext = encodePayload(session);
     global.session = session;
-    location.href = buildRedirectUrl(session.url, encodedContext);
-    //res.redirect(302, buildRedirectUrl(session.url, encodedContext));
+    res.redirect(302, buildRedirectUrl(session.url, encodedContext));
   } catch (error) {
     const { message, response } = error;
     res.status(response?.status || 500).json({ message });
