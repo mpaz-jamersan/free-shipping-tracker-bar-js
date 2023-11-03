@@ -13,7 +13,7 @@
   "main": "app.js",
   "scripts": {
     "watch": "node -r esm app.js",
-    "dev": "node app.js",
+    "dev": "node -r esm app.js",
     "build": "uglifyjs -o dist/app.min.js app.js"
   },
   "author": "",
