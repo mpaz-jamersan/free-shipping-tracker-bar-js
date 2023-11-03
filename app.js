@@ -13,6 +13,7 @@ global.session = null;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/auth", async (req, res) => {
+  console.log("auth..");
   try {
     const session = await getBCAuth(req.query);
     const encodedContext = encodePayload(session);
@@ -25,8 +26,10 @@ app.get("/auth", async (req, res) => {
 });
 
 app.get("/load", async (req, res) => {
+  console.log("load..");
   try {
     const session = await getBCVerify(req.query);
+    console.log("session..", session);
     const encodedContext = encodePayload(session);
     global.session = session;
     res.redirect(302, buildRedirectUrl(session.url, encodedContext));
